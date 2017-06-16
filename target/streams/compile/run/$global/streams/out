@@ -1,4 +1,4 @@
-[0m[[0minfo[0m] [0mRunning genConfigFiles /Users/seanmhendryx/Research/context/configFiles/out[0m
+[0m[[0minfo[0m] [0mRunning genConfigFiles /Users/seanmhendryx/Research/context/configFiles/in/application.conf /Users/seanmhendryx/Research/context/configFiles/out[0m
 [0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
 [0m[[0mdebug[0m] [0m  Classpath:[0m
 [0m[[0mdebug[0m] [0m	/Users/seanmhendryx/githublocal/generatepowersetconfigfiles/target/scala-2.11/classes[0m

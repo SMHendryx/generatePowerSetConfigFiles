@@ -3,14 +3,37 @@ import utils.Texter
 import java.io.File
 
 object genConfigFiles extends App {
-    val config =
-      // Assumes path to which output should be written is the first argument.  Optional second argument is an alternate application.conf file.
-      // If args only contain output path:
-      if (args.length == 1) ConfigFactory.load()
-      // else, specifying config file as second argument:
-      else ConfigFactory.parseFile(new File(args(1))).resolve()
+  // Read in config file as string from first argument: 
+  val configString = Texter.read(args(0))
+  //println(configString)
+  // Extract featureFamilies complete set using regex pattern matching:
+  /*val pattern = "featureFamilies\\s*=\\s*\\[(.*)\\]".r
+  pattern.findFirstIn(configString) match {
+    case Some(featureFamilyString) => println("Found featureFamily string set.  The match was: " + featureFamilyString)
+    case None => println("No matches found.")
+  }
+  */
+  // ^ That's tough, let's just hard code the featureFamilies set for now:
+  val featureFamilies = Set[String]("Dependency", "NegationProperty", "Phi", "POS", "Positional", "Tails")
+  
+  for (featureFamilySubset <- featureFamilies.subsets){
+    // build featureFamilies subset string (using StringBuilder);
+    val sb = new StringBuilder
+    sb ++= """featureFamilies = [""""
+    //featureFamilySubset.foreach(println)
+    for (featureFamily <- featureFamilySubset){
+      var i = 1
+      sb ++= featureFamily
+      if (i < featureFamilySubset.size){
+        sb ++= """", """"
+      } else{
+        sb ++= """"]"""
+      }
+    i += 1
+    }
+    print(sb.toString)
+  }
 
-    val featureFamiliesList = config.getStringList("contextCrossValidation.featureFamilies")
-    print(config.root.render())
-    //print(config.toString())
+
+  //println(featureFamilies)
 }
