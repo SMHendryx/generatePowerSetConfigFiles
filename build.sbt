@@ -3,6 +3,7 @@ import Dependencies._
 lazy val root = (project in file(".")).
   settings(
     inThisBuild(List(
+      author := "Sean Hendryx"
       organization := "CLU Lab University of Arizon",
       scalaVersion := "2.11.8",
       version      := "0.1.0-SNAPSHOT"

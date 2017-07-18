@@ -6,7 +6,7 @@ import scala.io.Source
 import java.io.{BufferedWriter, File, FileWriter}
 //import utils.IOUtils.using
 
-object genConfigFiles extends App {
+object GenConfigFiles extends App {
   //Get the output directory path from the second argument:
   val outputDir:String = args(1)
   // Extract featureFamilies complete set using regex pattern matching:
